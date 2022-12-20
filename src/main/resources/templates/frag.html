@@ -53,6 +53,46 @@
 			</nav>
 		</header>
 		
+		String title, String description, String url, String tag, Boolean isVisible, Category...categories
+		<!-- FORM FOTO CRUD FRAGMENT -->
+		<th:block th:fragment="form-crud-foto">
+			<div class="mb-3">
+				<label class="form-label">titolo foto</label>
+				<input class="form-control" type="text" name="title" th:field="*{title}">
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Descrizione foto</label>
+				<input class="form-control" type="text" name="description" th:field="*{description}">
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Url img foto</label>
+				<input class="form-control" type="text" name="url" th:field="*{url}">
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Tag foto</label>
+				<input class="form-control" type="text" name="tag" th:field="*{tag}">
+			</div>
+			<div class="form-check form-switch mb-3">
+			  <input class="form-check-input" type="checkbox" role="switch" name="isVisible" th:field="*{isVisible}">
+			  <label class="form-check-label" for="flexSwitchCheckDefault">Visibilità</label>
+			</div>
+			<label>Categorie :</label> <br>
+			<div	class="d-inline"
+					th:each="category : ${categories}"
+					th:object="${category}"
+				>
+				<input 
+					type="checkbox" 
+					name="categories" 
+					
+					th:value="*{id}" 
+					th:field="${foto.categories}">
+				<label>[[*{name}]]</label>
+			</div>	
+			
+			<input type="submit" value="save" class="btn btn-success">
+		</th:block>
+		
 		
 
 	</body>
