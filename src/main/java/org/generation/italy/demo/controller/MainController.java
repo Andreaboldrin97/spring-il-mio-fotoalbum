@@ -3,6 +3,7 @@ package org.generation.italy.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.generation.italy.demo.pojo.Category;
 import org.generation.italy.demo.pojo.Foto;
 import org.generation.italy.demo.service.CategoryService;
 import org.generation.italy.demo.service.FotoService;
@@ -20,6 +21,8 @@ public class MainController {
 		
 		@Autowired
 		private CategoryService categoryService;
+	
+	//ALL FREE PATH FOTO	
 		
 	//INDEX FOTO
 	//Indichiamo a quale path fa riferimento questo metodo
@@ -45,5 +48,20 @@ public class MainController {
 						
 		//a quale view fa riferimento
 		return "fotoCRUD/show";
+	}
+	
+	//ALL FREE PATH CATEGORY	
+	
+	//INDEX CATEGORY
+	//Indichiamo a quale path fa riferimento questo metodo
+	@GetMapping("/allCategory")
+	public String getCategory(Model model) {
+		//assegnamo ad un lista i record del db
+		List<Category> categories = categoryService.findAllFoto();
+						
+		model.addAttribute("categories", categories);
+						
+		//a quale view fa riferimento
+		return "categoryCRUD/index";
 	}
 }

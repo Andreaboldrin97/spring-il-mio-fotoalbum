@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Category;
 import org.generation.italy.demo.repo.CategoryRepo;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class CategoryService {
@@ -40,4 +43,21 @@ public class CategoryService {
 		//grazie all'interfaccia JpaRepository possiamo usare il method delete
 		categoryRepo.delete(category);
 	}	
+	
+	//funzione per le foto correlate
+	
+	//usiamo questa annotation per mantere il canele aperto tra il db e le query
+	@Transactional
+	public List<Category> findAllFoto() {
+		
+		//inserisco in una lista tutti gli ingredienti
+		List<Category> categories = categoryRepo.findAll();	
+		
+		for(Category category : categories) {		
+			//usiamo questa annotazione per creare la query al db
+			Hibernate.initialize(category.getFoto());
+		}		
+		//ritorno la stista con la join
+		return categories;
+	}
 }

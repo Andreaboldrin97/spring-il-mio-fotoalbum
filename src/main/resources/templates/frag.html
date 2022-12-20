@@ -106,7 +106,27 @@
 			<input type="submit" value="save" class="btn btn-success">
 		</th:block>
 		
+		<!-- FORM PROMOTION CRUD FRAGMENT -->
+		<th:block th:fragment="form-crud-category">
+			<div class="mb-3">
+				<label class="form-label">Nome categoria</label>
+				<input class="form-control" type="text" name="name" th:field="*{name}">
+			</div>
+			<div
+				th:each="foto : ${allFoto}"
+				th:object="${foto}"
+			>
+				<input 
+					type="checkbox" 
+					name="allFoto" 
+					
+					th:value="*{id}" 
+					th:field="${category.foto}">
+				<label>[[*{title}]]</label>
+			</div>	
 		
+			<input type="submit" value="save" class="btn btn-success">
+		</th:block>
 
 	</body>
 </html>

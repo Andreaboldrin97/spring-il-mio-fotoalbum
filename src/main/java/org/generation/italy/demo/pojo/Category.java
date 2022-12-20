@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -22,6 +23,7 @@ public class Category {
 	private int id;
 	
 	@NotNull
+	@NotEmpty(message = "il nome non può essere vuoto")
 	private String name;
 	
 	@ManyToMany(mappedBy = "categories")
