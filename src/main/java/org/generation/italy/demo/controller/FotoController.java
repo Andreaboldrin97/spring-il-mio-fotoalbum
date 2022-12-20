@@ -114,4 +114,20 @@ public class FotoController {
 				//a quale view ritorna
 				return "redirect:/allFoto";
 			}
+			
+			//DELETE 
+			//Indichiamo a quale path fa riferimento questo metodo
+			@GetMapping("foto/delete/{id}")
+			public String deleteFoto(@PathVariable("id") int id) {
+				
+				// selezioniamo il record con quell'id
+				Optional<Foto> optFoto = fotoService.findFotoByID(id);
+				Foto foto = optFoto.get();					
+				
+				//metodo per eliminare un record
+				fotoService.delete(foto);
+				
+				//a quale view ritorna
+				return  "redirect:/allFoto";
+			}
 }
