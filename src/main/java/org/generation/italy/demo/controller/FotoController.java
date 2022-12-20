@@ -105,7 +105,7 @@ public class FotoController {
 					redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 					
 					//ritorniamo al form con gli errori se i dati sono errati
-					return "redirect:foto/update";			
+					return "redirect:/admin/foto/edit/" + foto.getId();			
 				}
 				
 				//metodo per salvare un record
