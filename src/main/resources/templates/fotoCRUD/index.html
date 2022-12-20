@@ -32,7 +32,7 @@
 				    <tr th:each=" foto : ${allFoto}" th:object="${foto}" th:if="${allFoto.size() > 0}">
 				      <th scope="row" th:text="*{id}"></th>
 				      <td >
-				      	<a  th:href="@{show/foto/{id} (id=*{id})}"  th:text="*{title}"></a>
+				      	<a  th:href="@{useradmin/show/foto/{id} (id=*{id})}"  th:text="*{title}"></a>
 				      </td>
 				      <td th:if="*{description != null}" th:text="*{description}"></td>
 				      <td th:unless="*{description != null}">null</td>

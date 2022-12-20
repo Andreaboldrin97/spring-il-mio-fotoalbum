@@ -71,7 +71,7 @@ public class FotoController {
 		fotoService.save(foto);
 		
 		//a quale view ritorna
-		return "redirect:/allFoto";
+		return "redirect:/useradmin/allFoto";
 	}
 	
 	//EDIT&UPDATE
@@ -112,7 +112,7 @@ public class FotoController {
 				fotoService.save(foto);
 				
 				//a quale view ritorna
-				return "redirect:/allFoto";
+				return "redirect:/useradmin/allFoto";
 			}
 			
 			//DELETE 
@@ -128,6 +128,6 @@ public class FotoController {
 				fotoService.delete(foto);
 				
 				//a quale view ritorna
-				return  "redirect:/allFoto";
+				return  "redirect:/useradmin/allFoto";
 			}
 }

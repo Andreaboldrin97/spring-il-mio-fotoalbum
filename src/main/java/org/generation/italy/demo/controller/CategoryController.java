@@ -74,7 +74,7 @@ public class CategoryController {
 			categoryService.save(category);
 			
 			//a quale view ritorna
-			return "redirect:/allCategory";
+			return "redirect:/useradmin/allCategory";
 		}
 		
 		//EDIT&UPDATE
@@ -127,7 +127,7 @@ public class CategoryController {
 					categoryService.save(category);
 					
 					//a quale view ritorna
-					return "redirect:/allCategory";
+					return "redirect:/useradmin/allCategory";
 				}
 				
 				//DELETE
@@ -147,6 +147,6 @@ public class CategoryController {
 					categoryService.delete(cat);
 					
 					//a quale view ritorna
-					return  "redirect:/allCategory";
+					return  "redirect:/useradmin/allCategory";
 				}
 }
