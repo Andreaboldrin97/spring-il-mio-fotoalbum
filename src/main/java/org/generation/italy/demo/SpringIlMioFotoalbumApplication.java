@@ -2,8 +2,12 @@ package org.generation.italy.demo;
 
 import org.generation.italy.demo.pojo.Category;
 import org.generation.italy.demo.pojo.Foto;
+import org.generation.italy.demo.pojo.Role;
+import org.generation.italy.demo.pojo.User;
 import org.generation.italy.demo.service.CategoryService;
 import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.service.RoleService;
+import org.generation.italy.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,9 +27,31 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private UserService userService;
+	
 	//DATI FAKER
 		@Override
 		public void run(String... args) throws Exception {
+			
+			//ROLE
+			Role user = new Role("user");
+			Role admin= new Role("admin");
+			
+			roleService.save(user);
+			roleService.save(admin);
+			
+			//USER
+			User user1 = new User("user","{noop}user",user);
+			User admin1 = new User("admin","{noop}admin",admin);
+			User userAdmin1 = new User("useradmin", "{noop}useradmin", user, admin);
+			
+			userService.save(user1);
+			userService.save(admin1);
+			userService.save(userAdmin1);
 			
 			//CATEGORY
 			Category c1 = new Category("film");
