@@ -1,6 +1,7 @@
 package org.generation.italy.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Foto;
 import org.generation.italy.demo.service.CategoryService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MainController {
@@ -19,10 +21,10 @@ public class MainController {
 		@Autowired
 		private CategoryService categoryService;
 		
-	//INDEX 
+	//INDEX FOTO
 	//Indichiamo a quale path fa riferimento questo metodo
 	@GetMapping("/allFoto")
-	public String getPizze(Model model) {
+	public String getFoto(Model model) {
 		//assegnamo ad un lista i record del db
 		List<Foto> allFoto = fotoService.findAll();
 					
@@ -30,5 +32,18 @@ public class MainController {
 					
 		//a quale view fa riferimento
 		return "fotoCRUD/index";
+	}
+	
+	//SHOW FOTO
+	//Indichiamo a quale path fa riferimento questo metodo
+	@GetMapping("/show/foto/{id}")
+	public String getFotoById(@PathVariable("id") int id, Model model) {
+		// selezioniamo il record con quell'id
+		Optional<Foto> optFoto = fotoService.findPizzaByID(id);
+		Foto foto = optFoto.get();					
+		model.addAttribute("foto", foto);
+						
+		//a quale view fa riferimento
+		return "fotoCRUD/show";
 	}
 }

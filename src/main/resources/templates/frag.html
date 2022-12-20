@@ -22,10 +22,10 @@
 			          <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" th:href="@{/allPizzas}">Foto</a>
+			          <a class="nav-link" th:href="@{/allFoto}">Foto</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" th:href="@{/drink}">Categorie</a>
+			          <a class="nav-link" th:href="@{/allCategory}">Categorie</a>
 			        </li>
 			        
 			      </ul>
@@ -53,7 +53,20 @@
 			</nav>
 		</header>
 		
-		String title, String description, String url, String tag, Boolean isVisible, Category...categories
+		<!-- SHOW FOTO CRUD FRAGMENT -->
+		<th:block th:fragment="frag-show">
+			<div class="card" style="width: 18rem;">
+				 <img th:src="*{url}" class="card-img-top" th:alt="*{title}">
+				 <div class="card-body">
+				 	 <h5 class="card-title" th:text="*{title}"></h5>
+				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{tag}"></h6>
+				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{isVisible}"></h6>
+				    <p class="card-text" th:text="*{description}"></p>
+				    <h6 class="card-subtitle mb-2 text-muted" th:text="${foto.categories}"></h6>
+				</div>
+			</div>
+		</th:block>
+		
 		<!-- FORM FOTO CRUD FRAGMENT -->
 		<th:block th:fragment="form-crud-foto">
 			<div class="mb-3">

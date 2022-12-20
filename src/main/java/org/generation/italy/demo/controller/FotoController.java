@@ -74,4 +74,6 @@ public class FotoController {
 		//a quale view ritorna
 		return "redirect:/allFoto";
 	}
+	
+	
 }
