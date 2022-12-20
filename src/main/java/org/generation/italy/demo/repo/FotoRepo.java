@@ -10,10 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface FotoRepo  extends JpaRepository<Foto, Integer>{
 	//metodo custum per la ricerca
 		//il nome del metodo ha le parole chiavi per effetuare la chiamata sql 
-		public List<Foto> findBytitleContainingIgnoreCase(String title);
-		
-	//metodo custum per la ricerca
-		//il nome del metodo ha le parole chiavi per effetuare la chiamata sql 
-		public List<Foto> findBytagContainingIgnoreCase(String tag);
+		public List<Foto> findByTitleContainingOrTagContaining(String title, String tag);
 		
 }

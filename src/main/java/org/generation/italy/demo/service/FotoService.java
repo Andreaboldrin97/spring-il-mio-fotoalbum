@@ -43,14 +43,10 @@ public class FotoService {
 		}
 		
 	//funzione di ricerca by title
-	public List<Foto> findByTitle(String title) {
+	public List<Foto> findByTitleAndTag(String title, String tag) {
 		//ritorniamo una lista di record
-		return fotoRepo.findBytitleContainingIgnoreCase(title);
+		return fotoRepo.findByTitleContainingOrTagContaining(title, tag);
 	}
 	
-	//funzione di ricerca by tag
-	public List<Foto> findByTag(String tag) {
-		//ritorniamo una lista di record
-		return fotoRepo.findBytagContainingIgnoreCase(tag);
-	}
+	
 }

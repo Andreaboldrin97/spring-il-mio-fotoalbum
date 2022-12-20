@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -63,5 +64,21 @@ public class MainController {
 						
 		//a quale view fa riferimento
 		return "categoryCRUD/index";
+	}
+	
+	//FILTERED SEARCH
+	@GetMapping("/search")
+	public String findByName(Model model,
+								// @RequestParam per estrarre parametri di query, 
+								@RequestParam(name = "query", required=false) String query) {
+			
+	System.err.println(query);
+		//utilizziamo un ternario per verificare la presenza di una query
+		List<Foto> allFoto = query == null ? fotoService.findAll() : fotoService.findByTitleAndTag(query, query);
+		//portiamo i record alla pagina
+		model.addAttribute("allFoto", allFoto);
+		model.addAttribute("query", query);
+			
+		return "searching";
 	}
 }

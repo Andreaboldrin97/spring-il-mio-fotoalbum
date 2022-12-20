@@ -23,7 +23,7 @@ public class SecurityConf {
 				//indichiamo in base al path il role che potra accedere
 				.requestMatchers("/user", "/user/**").hasAuthority("user")
 				.requestMatchers("/admin", "/admin/**").hasAuthority("admin")
-				.requestMatchers("/useradmin", "/useradmin/**").hasAnyAuthority("USER", "ADMIN")	
+				.requestMatchers("/useradmin", "/useradmin/**").hasAnyAuthority("user", "admin")	
 				.requestMatchers("/**").permitAll()
 			.and().formLogin()
 			.and().logout()
