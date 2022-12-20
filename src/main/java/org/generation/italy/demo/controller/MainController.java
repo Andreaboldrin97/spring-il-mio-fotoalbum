@@ -39,7 +39,7 @@ public class MainController {
 	@GetMapping("/show/foto/{id}")
 	public String getFotoById(@PathVariable("id") int id, Model model) {
 		// selezioniamo il record con quell'id
-		Optional<Foto> optFoto = fotoService.findPizzaByID(id);
+		Optional<Foto> optFoto = fotoService.findFotoByID(id);
 		Foto foto = optFoto.get();					
 		model.addAttribute("foto", foto);
 						

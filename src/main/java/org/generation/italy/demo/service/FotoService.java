@@ -31,7 +31,7 @@ public class FotoService {
 	
 	//funzione per recuperare un record specifico in base all'id
 			//utilizzeremo l'Optional<> per controllare se un valore è presente o non 
-	public Optional<Foto> findPizzaByID(int id){
+	public Optional<Foto> findFotoByID(int id){
 			
 		return fotoRepo.findById(id);
 	}

@@ -30,7 +30,7 @@ public class CategoryService {
 	
 	//funzione per recuperare un record specifico in base all'id
 			//utilizzeremo l'Optional<> per controllare se un valore è presente o non 
-	public Optional<Category> findPizzaByID(int id){
+	public Optional<Category> findCategoryByID(int id){
 			
 	 return categoryRepo.findById(id);
 	}
