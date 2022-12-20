@@ -129,4 +129,24 @@ public class CategoryController {
 					//a quale view ritorna
 					return "redirect:/allCategory";
 				}
+				
+				//DELETE
+				@GetMapping("category/delete/{id}")
+				public String deleteCategory(@PathVariable("id") int id) {
+					
+					// selezioniamo il record con quell'id
+					Optional<Category> optCategory = categoryService.findCategoryByID(id);
+					Category cat  = optCategory.get();
+					
+					//azzeriamo l'ingrediente prima di salvarlo
+					for (Foto foto : cat.getFoto()) {
+						foto.getCategories().remove(cat);
+					}
+					
+					//metodo per eliminare un record
+					categoryService.delete(cat);
+					
+					//a quale view ritorna
+					return  "redirect:/allCategory";
+				}
 }
