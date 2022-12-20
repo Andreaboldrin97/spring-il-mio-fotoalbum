@@ -2,8 +2,14 @@
   <div>
       <HeaderComponent/>
       <main class="container">
+           <div class="d-flex mt-2 justify-content-end">
+               <div class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="query">
+                    <button class="btn btn-outline-success" type="submit" @click="getSearchPhoto()">Search</button>
+               </div>
+           </div>
         <div class="row">
-            <div class="my-4 col-6" v-for="photo in photos" :key="photo.id">
+            <div class="my-2 col-6" v-for="photo in photos" :key="photo.id">
                 <div :class="photo.isVisible ? ' ' : 'd-none'">
                     <div class="card m-3">
                         <div class="card-img d-flex justify-content-center">
@@ -49,7 +55,6 @@ import axios from 'axios';
 import HeaderComponent from './HeaderComponent.vue'
 //costabte url
 const API_URL = "http://localhost:8080/api/1";
-const ACTIVE_INDEX  = -1;
 
 export default {
     components: {
@@ -58,7 +63,7 @@ export default {
   data() {
     return {
         photos : [],
-        activePhotoIndex: ACTIVE_INDEX,
+        query : '',
     };
   },
   methods: {
@@ -77,7 +82,7 @@ export default {
                 console.log(error)
             });
    },
-    //metodo che recupera' l'index della pizza 
+    //metodo che recupera' l'index 
     getPhotoIndexById(id) {
         for (let x=0; x<this.photos.length; x++) {
             const photo = this.photos[x];
@@ -86,6 +91,22 @@ export default {
             }
         }
         return -1;
+    },
+     //? query api
+    getSearchPhoto(){
+        console.log(this.query)
+        if(this.query == ""){
+            this.getAllPhoto();
+        }
+        axios.get(API_URL + '/foto/search/'+ this.query )
+         .then(res => {
+             const allPhoto = res.data;
+            //se il risultato è null blocca l'eseguzione
+            if (allPhoto == null) return;
+            this.photos  = allPhoto;   
+        }).catch(error => {
+            console.log(error)
+            });
     },
    //!INGREDIENT METHODS
      getPhotoCategories(photoId) {
@@ -97,7 +118,7 @@ export default {
             const index = this.getPhotoIndexById( photoId);
           //recupro l'elemento nell'array by index
             const photo = this.photos[index];
-          //aggiungo gli ingredienti
+          //aggiungo le categorie
             photo.categories = categories; 
           //sostituisco il vecchio elemento con quello nuovo aggiornato 
             this.photos.splice(index, 1 , photo);
@@ -120,6 +141,9 @@ export default {
 </script>
 
 <style scoped>
+    .search{
+        width: 350px;
+    }
     .card{
         height: 100%;
     }

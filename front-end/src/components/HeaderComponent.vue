@@ -12,11 +12,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </ul>          
                     <a class="mx-2 btn btn-success" href="http://localhost:8080/login">ACCEDI</a>
                 </div>
             </div>
