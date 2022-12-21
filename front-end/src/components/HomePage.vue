@@ -52,7 +52,21 @@
                     </div>
                         
                     <div class="card-footer">
-                        
+                        <button class="btn btn-outline-dark " @click="editCommentPhoto(photo.id)" v-if="photo_id !== photo.id">commenta</button>
+                         <div class="p-3" v-else>
+                            <div class="w-100">
+                                AGGIUNGI UN COMMENTO..
+                                <div class="mb-3">
+                                    <label class="form-label">Inserisci il tuo nome</label>
+                                    <input class="form-control" type="text" name="name" v-model="comment_create.name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Inserisci il tuo commento</label>
+                                    <input class="form-control" type="text" name="text" v-model="comment_create.text">
+                                </div>
+                                <button class="btn btn-success" @click="createNewComment(photo.id)">invio</button>
+                            </div>
+                        </div>
                     </div>                  
                 </div>
             </div>
@@ -76,6 +90,9 @@ export default {
     return {
         photos : [],
         query : '',
+        addBooleanComment : false,
+        comment_create : {},
+        photo_id : -1,
     };
   },
   methods: {
@@ -103,6 +120,10 @@ export default {
             }
         }
         return -1;
+    },
+     editCommentPhoto(id) {
+      this.photo_id = id;
+      console.log(this.photo_id )
     },
      //? query api
     getSearchPhoto(){
@@ -141,6 +162,7 @@ export default {
         })
     },
     //!COMMENT METHODS
+    //query per ottenere
     getPhotoComments(photoId) {
       axios.get(API_URL + "/comment/by/foto/" + photoId)
         .then(response => {
@@ -155,6 +177,25 @@ export default {
           //sostituisco il vecchio elemento con quello nuovo aggiornato 
             this.photos.splice(index, 1 , photo);
             console.log(this.photos[index]);
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    //metodo create
+    createNewComment(photoId){
+        axios.post(API_URL + "/comment/add/by/foto/" + photoId, this.comment_create)
+        .then(response => {
+            const comment = response.data
+            if (comment == null) return
+          //recupero l'index dell'elemento
+            const index = this.getPhotoIndexById( photoId);
+          //recupro l'elemento nell'array by index
+            const photo = this.photos[index];
+          //aggiungo le categorie
+            photo.comments.push(comment); 
+            //sostituisco il vecchio elemento con quello nuovo aggiornato 
+            this.photos.splice(index, 1 , photo);
         })
         .catch(error => {
           console.log(error)
