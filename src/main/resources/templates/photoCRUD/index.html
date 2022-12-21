@@ -44,8 +44,8 @@
 				       		th:text="${Photo.categories}">
 				       	</div>
 				      </td>
-				      <td sec:authorize="hasAuthority('admin')">
-				      	<a class="btn btn-primary" th:href="@{/admin/Photo/edit/{id} (id = *{id})}">Edit</a>
+				      <td sec:authorize="hasAuthority('admin')" class="d-flex m-1">
+				      	<a class="btn btn-primary me-1" th:href="@{/admin/Photo/edit/{id} (id = *{id})}">Edit</a>
 					  	<a class="btn btn-danger" th:href="@{/admin/Photo/delete/{id} (id = *{id})}" >Delete</a>
 					  </td>
 				    </tr>
