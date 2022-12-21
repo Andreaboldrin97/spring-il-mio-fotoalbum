@@ -9,8 +9,8 @@
                </div>
            </div>
         <div class="row">
-            <div class="my-2 col-6" v-for="photo in photos" :key="photo.id" :class="photo.isVisible ? ' ' : 'd-none'">
-                <div class="card m-3">
+            <div class="my-4 col-6" v-for="photo in photos" :key="photo.id" :class="photo.isVisible ? ' ' : 'd-none'">
+                <div class="card m-3 move-card">
                     <div class="card-img d-flex justify-content-center">
                         <img  :src="photo.url" class="card-img-top" alt="image-post"> 
                     </div>
@@ -215,7 +215,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
     .search{
         width: 350px;
     }
@@ -227,5 +227,13 @@ export default {
     }
     img{
         object-fit: cover;
+    }
+    .move-card{
+        object-fit: cover;
+        transition: 1s;
+        &:hover{
+            transform: scale(1.08);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
     }
 </style>
