@@ -22,7 +22,7 @@
 			          <a class="nav-link active" aria-current="page" href="http://localhost:8081/">Home</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" th:href="@{/useradmin/allFoto}">Foto</a>
+			          <a class="nav-link" th:href="@{/useradmin/allPhoto}">Foto</a>
 			        </li>
 			        <li class="nav-item">
 			          <a class="nav-link" th:href="@{/useradmin/allCategory}">Categorie</a>
@@ -53,7 +53,7 @@
 			</nav>
 		</header>
 		
-		<!-- SHOW FOTO CRUD FRAGMENT -->
+		<!-- SHOW Photo CRUD FRAGMENT -->
 		<th:block th:fragment="frag-show">
 			<div class="card" style="width: 18rem;">
 				 <img th:src="*{url}" class="card-img-top" th:alt="*{title}">
@@ -62,27 +62,27 @@
 				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{tag}"></h6>
 				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{isVisible}"></h6>
 				    <p class="card-text" th:text="*{description}"></p>
-				    <h6 class="card-subtitle mb-2 text-muted" th:text="${foto.categories}"></h6>
+				    <h6 class="card-subtitle mb-2 text-muted" th:text="${Photo.categories}"></h6>
 				</div>
 			</div>
 		</th:block>
 		
-		<!-- FORM FOTO CRUD FRAGMENT -->
-		<th:block th:fragment="form-crud-foto">
+		<!-- FORM Photo CRUD FRAGMENT -->
+		<th:block th:fragment="form-crud-Photo">
 			<div class="mb-3">
-				<label class="form-label">titolo foto</label>
+				<label class="form-label">titolo Foto</label>
 				<input class="form-control" type="text" name="title" th:field="*{title}">
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Descrizione foto</label>
+				<label class="form-label">Descrizione Foto</label>
 				<input class="form-control" type="text" name="description" th:field="*{description}">
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Url img foto</label>
+				<label class="form-label">Url img Foto</label>
 				<input class="form-control" type="text" name="url" th:field="*{url}">
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Tag foto</label>
+				<label class="form-label">Tag Foto</label>
 				<input class="form-control" type="text" name="tag" th:field="*{tag}">
 			</div>
 			<div class="form-check form-switch mb-3">
@@ -99,7 +99,7 @@
 					name="categories" 
 					
 					th:value="*{id}" 
-					th:field="${foto.categories}">
+					th:field="${Photo.categories}">
 				<label>[[*{name}]]</label>
 			</div>	
 			
@@ -113,15 +113,15 @@
 				<input class="form-control" type="text" name="name" th:field="*{name}">
 			</div>
 			<div
-				th:each="foto : ${allFoto}"
-				th:object="${foto}"
+				th:each="Photo : ${allPhoto}"
+				th:object="${Photo}"
 			>
 				<input 
 					type="checkbox" 
-					name="allFoto" 
+					name="allPhoto" 
 					
 					th:value="*{id}" 
-					th:field="${category.foto}">
+					th:field="${category.Photo}">
 				<label>[[*{title}]]</label>
 			</div>	
 		

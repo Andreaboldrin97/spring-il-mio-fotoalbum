@@ -2,8 +2,8 @@ package org.generation.italy.demo.controller;
 
 import java.util.List;
 
-import org.generation.italy.demo.pojo.Foto;
-import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.pojo.Photo;
+import org.generation.italy.demo.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 	//indichiamo la dipendenza da iniettare
 	@Autowired
-	private FotoService fotoService;
+	private PhotoService PhotoService;
 	
 
 		//HOME
@@ -33,9 +33,9 @@ public class MainController {
 				
 		System.err.println(query);
 			//utilizziamo un ternario per verificare la presenza di una query
-			List<Foto> allFoto = query == null ? fotoService.findAll() : fotoService.findByTitleAndTag(query, query);
+			List<Photo> allPhoto = query == null ? PhotoService.findAll() : PhotoService.findByTitleAndTag(query, query);
 			//portiamo i record alla pagina
-			model.addAttribute("allFoto", allFoto);
+			model.addAttribute("allPhoto", allPhoto);
 			model.addAttribute("query", query);
 				
 			return "searching";

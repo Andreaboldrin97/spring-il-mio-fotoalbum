@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Category;
-import org.generation.italy.demo.pojo.Foto;
+import org.generation.italy.demo.pojo.Photo;
 import org.generation.italy.demo.service.CategoryService;
-import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class CategoryController {
 
 	//indichiamo la dipendenza da iniettare
 	@Autowired
-	private FotoService fotoService;
+	private PhotoService PhotoService;
 		
 	@Autowired
 	private CategoryService categoryService;
@@ -37,12 +37,12 @@ public class CategoryController {
 		@GetMapping("/category/create")
 		public String createCategory(Model model) {
 			
-			//esportiamo il costrutto delle foto
+			//esportiamo il costrutto delle Photo
 			Category category = new Category();
 			model.addAttribute("category", category);
 			
-			List<Foto> allFoto =  fotoService.findAll();
-			model.addAttribute("allFoto", allFoto);
+			List<Photo> allPhoto =  PhotoService.findAll();
+			model.addAttribute("allPhoto", allPhoto);
 			
 			return "categoryCRUD/create";
 		}
@@ -62,11 +62,11 @@ public class CategoryController {
 				return "redirect:/admin/category/create";		
 			}
 			//salvataggio inverso
-			//metodo per otterere le foto inserite
-			List<Foto> allFotoChoise =  category.getFoto();
-			for (Foto foto : allFotoChoise ) {
+			//metodo per otterere le Photo inserite
+			List<Photo> allPhotoChoise =  category.getPhoto();
+			for (Photo Photo : allPhotoChoise ) {
 				//inserisco le categorie da salvare
-				 foto.getCategories().add(category);
+				 Photo.getCategories().add(category);
 				
 			}
 			
@@ -86,8 +86,8 @@ public class CategoryController {
 					Category category  = optCategory.get();
 					model.addAttribute("category", category);
 					
-					List<Foto> allFoto =  fotoService.findAll();
-					model.addAttribute("allFoto", allFoto);
+					List<Photo> allPhoto =  PhotoService.findAll();
+					model.addAttribute("allPhoto", allPhoto);
 					
 					return "categoryCRUD/update";
 				}
@@ -111,16 +111,16 @@ public class CategoryController {
 					Optional<Category> optCategory = categoryService.findCategoryByID(category.getId());
 					Category cat  = optCategory.get();
 					//azzeriamo l'ingrediente prima di salvarlo
-					for (Foto foto : cat.getFoto()) {
-						foto.getCategories().remove(cat);
+					for (Photo Photo : cat.getPhoto()) {
+						Photo.getCategories().remove(cat);
 					}
 					
 					//salvataggio inverso
-					//metodo per otterere le foto inserite
-					List<Foto> allFotoChoise =  category.getFoto();
-					for (Foto foto : allFotoChoise ) {
+					//metodo per otterere le Photo inserite
+					List<Photo> allPhotoChoise =  category.getPhoto();
+					for (Photo Photo : allPhotoChoise ) {
 						//inserisco le categorie da salvare
-						 foto.getCategories().add(category);	
+						 Photo.getCategories().add(category);	
 					}
 					
 					//metodo per salvare un record
@@ -139,8 +139,8 @@ public class CategoryController {
 					Category cat  = optCategory.get();
 					
 					//azzeriamo l'ingrediente prima di salvarlo
-					for (Foto foto : cat.getFoto()) {
-						foto.getCategories().remove(cat);
+					for (Photo Photo : cat.getPhoto()) {
+						Photo.getCategories().remove(cat);
 					}
 					
 					//metodo per eliminare un record

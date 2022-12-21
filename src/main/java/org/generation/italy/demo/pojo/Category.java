@@ -28,7 +28,7 @@ public class Category {
 	
 	@ManyToMany(mappedBy = "categories")
 	@JsonIgnore
-	private List<Foto> foto;
+	private List<Photo> Photo;
 	
 	//COSTRUCTS	
 	// indichiamo il costruttore di default
@@ -39,10 +39,10 @@ public class Category {
 		setName(name);
 	};
 	
-	//creiamo il costruttore + foto
-	public Category (String name, Foto...fotos) {
+	//creiamo il costruttore + Photo
+	public Category (String name, Photo...Photos) {
 		this(name);
-		setFoto(Arrays.asList(fotos));
+		setPhoto(Arrays.asList(Photos));
 	};
 	
 	
@@ -61,11 +61,11 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Foto> getFoto() {
-		return foto;
+	public List<Photo> getPhoto() {
+		return Photo;
 	}
-	public void setFoto(List<Foto> foto) {
-		this.foto = foto;
+	public void setPhoto(List<Photo> Photo) {
+		this.Photo = Photo;
 	}
 	
 	@Override

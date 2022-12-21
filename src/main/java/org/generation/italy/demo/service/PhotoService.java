@@ -3,49 +3,49 @@ package org.generation.italy.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.generation.italy.demo.pojo.Foto;
-import org.generation.italy.demo.repo.FotoRepo;
+import org.generation.italy.demo.pojo.Photo;
+import org.generation.italy.demo.repo.PhotoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FotoService {
+public class PhotoService {
 	
 	//indichiamo la dipendenza da iniettare
 	@Autowired
-	private FotoRepo fotoRepo;
+	private PhotoRepo PhotoRepo;
 	
 	//funzione per salvare/inserire un record
-	public Foto save(Foto foto) {
+	public Photo save(Photo Photo) {
 			
 		//grazie all'interfaccia JpaRepository possiamo usare il method save
-		return fotoRepo.save(foto);
+		return PhotoRepo.save(Photo);
 	}
 	
 	//funzione per prendere tutti i record
-	public List<Foto> findAll() {
+	public List<Photo> findAll() {
 			
 		//ritorniamo una lista di record
-		return fotoRepo.findAll();
+		return PhotoRepo.findAll();
 	}
 	
 	//funzione per recuperare un record specifico in base all'id
 			//utilizzeremo l'Optional<> per controllare se un valore è presente o non 
-	public Optional<Foto> findFotoByID(int id){
+	public Optional<Photo> findPhotoByID(int id){
 			
-		return fotoRepo.findById(id);
+		return PhotoRepo.findById(id);
 	}
 	
 	//funzione per l'elimanazione di un record
-		public void delete(Foto foto) {
+		public void delete(Photo Photo) {
 			//grazie all'interfaccia JpaRepository possiamo usare il method delete
-			fotoRepo.delete(foto);
+			PhotoRepo.delete(Photo);
 		}
 		
 	//funzione di ricerca by title
-	public List<Foto> findByTitleAndTag(String title, String tag) {
+	public List<Photo> findByTitleAndTag(String title, String tag) {
 		//ritorniamo una lista di record
-		return fotoRepo.findByTitleContainingOrTagContaining(title, tag);
+		return PhotoRepo.findByTitleContainingOrTagContaining(title, tag);
 	}
 	
 	

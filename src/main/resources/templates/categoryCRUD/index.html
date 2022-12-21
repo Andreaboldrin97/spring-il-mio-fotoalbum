@@ -30,12 +30,12 @@
 				      <td th:text="*{name}"></td>
 				       <td >
 				       		<div class="me-2"
-					       		th:each="foto : ${category.getFoto()}"
-					       		th:object="${foto}"
+					       		th:each="Photo : ${category.getPhoto()}"
+					       		th:object="${Photo}"
 					       		th:text="*{title}"
-					       		th:if="${category.getFoto().size > 0}">
+					       		th:if="${category.getPhoto().size > 0}">
 				       		</div>
-				       		<div th:unless="${category.getFoto().size > 0}">non ci sono foto correlate</div>
+				       		<div th:unless="${category.getPhoto().size > 0}">non ci sono FOTO correlate</div>
 				       </td>
 				      <td sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" th:href="@{admin/category/edit/{id} (id = *{id})}" >Edit</a>

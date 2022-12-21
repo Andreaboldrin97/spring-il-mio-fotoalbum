@@ -3,9 +3,9 @@ package org.generation.italy.demo.controller.api;
 import java.util.Set;
 
 import org.generation.italy.demo.pojo.Comment;
-import org.generation.italy.demo.pojo.Foto;
+import org.generation.italy.demo.pojo.Photo;
 import org.generation.italy.demo.service.CommentService;
-import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,22 +26,22 @@ public class CommentApiController {
 	private CommentService commentService;
 	
 	@Autowired
-	private FotoService fotoService;
+	private PhotoService PhotoService;
 	
-	@GetMapping("/by/foto/{id}")
-	public Set<Comment> getCommentByFotoId(@PathVariable("id") int id){
+	@GetMapping("/by/Photo/{id}")
+	public Set<Comment> getCommentByPhotoId(@PathVariable("id") int id){
 		
-		Foto foto = fotoService.findFotoByID(id).get();
-		return  foto.getComments();
+		Photo Photo = PhotoService.findPhotoByID(id).get();
+		return  Photo.getComments();
 	}
 	
-	@PostMapping("/add/by/foto/{id}")
-	public Comment addCommentByFotoId(@PathVariable("id") int id , @Valid @RequestBody Comment comment) {
+	@PostMapping("/add/by/Photo/{id}")
+	public Comment addCommentByPhotoId(@PathVariable("id") int id , @Valid @RequestBody Comment comment) {
 		
 		//prendo l'elemento by id
-		Foto foto = fotoService.findFotoByID(id).get();
+		Photo Photo = PhotoService.findPhotoByID(id).get();
 		
-		Comment newComment = new Comment(comment.getName(), comment.getText(), foto);
+		Comment newComment = new Comment(comment.getName(), comment.getText(), Photo);
 		
 		commentService.save(newComment);
 		

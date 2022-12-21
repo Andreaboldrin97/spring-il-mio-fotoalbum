@@ -24,15 +24,15 @@
 				      <th scope="col">VISIBILITA'</th>
 				      <th scope="col">CATEGORIE</th>
 				      <th scope="col" sec:authorize="hasAuthority('admin')">
-				      	<a class="btn btn-primary" th:href="@{/admin/foto/create}">Aggiungi foto</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/Photo/create}">Aggiungi FOTO</a>
 				      </th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr th:each=" foto : ${allFoto}" th:object="${foto}" th:if="${allFoto.size() > 0}">
+				    <tr th:each=" Photo : ${allPhoto}" th:object="${Photo}" th:if="${allPhoto.size() > 0}">
 				      <th scope="row" th:text="*{id}"></th>
 				      <td >
-				      	<a  th:href="@{/useradmin/show/foto/{id} (id=*{id})}"  th:text="*{title}"></a>
+				      	<a  th:href="@{/useradmin/show/Photo/{id} (id=*{id})}"  th:text="*{title}"></a>
 				      </td>
 				      <td th:if="*{description != null}" th:text="*{description}"></td>
 				      <td th:unless="*{description != null}">null</td>
@@ -41,18 +41,18 @@
 				      <td th:text="*{isVisible}"></td>
 				      <td>
 				       	<div
-				       		th:text="${foto.categories}">
+				       		th:text="${Photo.categories}">
 				       	</div>
 				      </td>
 				      <td sec:authorize="hasAuthority('admin')">
-				      	<a class="btn btn-primary" th:href="@{/admin/foto/edit/{id} (id = *{id})}">Edit</a>
-					  	<a class="btn btn-danger" th:href="@{/admin/foto/delete/{id} (id = *{id})}" >Delete</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/Photo/edit/{id} (id = *{id})}">Edit</a>
+					  	<a class="btn btn-danger" th:href="@{/admin/Photo/delete/{id} (id = *{id})}" >Delete</a>
 					  </td>
 				    </tr>
 				  </tbody>
 				</table>
 			</div>
-			<h1 class="text-center"  th:unless="${allFoto.size() > 0}"> NON sono presenti foto</h1>
+			<h1 class="text-center"  th:unless="${allPhoto.size() > 0}"> NON sono presenti FOTO</h1>
 			
 		</main>
 		

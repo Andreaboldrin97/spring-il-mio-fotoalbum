@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Category;
-import org.generation.italy.demo.pojo.Foto;
+import org.generation.italy.demo.pojo.Photo;
 import org.generation.italy.demo.service.CategoryService;
-import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,37 +20,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserAdminController {
 	//indichiamo la dipendenza da iniettare
 		@Autowired
-		private FotoService fotoService;
+		private PhotoService PhotoService;
 		
 		@Autowired
 		private CategoryService categoryService;
 	
-	//ALL FREE PATH FOTO	
+	//ALL FREE PATH Photo	
 		
-	//INDEX FOTO
+	//INDEX Photo
 	//Indichiamo a quale path fa riferimento questo metodo
-	@GetMapping("/allFoto")
-	public String getFoto(Model model) {
+	@GetMapping("/allPhoto")
+	public String getPhoto(Model model) {
 		//assegnamo ad un lista i record del db
-		List<Foto> allFoto = fotoService.findAll();
+		List<Photo> allPhoto = PhotoService.findAll();
 					
-		model.addAttribute("allFoto", allFoto);
+		model.addAttribute("allPhoto", allPhoto);
 					
 		//a quale view fa riferimento
-		return "fotoCRUD/index";
+		return "PhotoCRUD/index";
 	}
 	
-	//SHOW FOTO
+	//SHOW Photo
 	//Indichiamo a quale path fa riferimento questo metodo
-	@GetMapping("/show/foto/{id}")
-	public String getFotoById(@PathVariable("id") int id, Model model) {
+	@GetMapping("/show/Photo/{id}")
+	public String getPhotoById(@PathVariable("id") int id, Model model) {
 		// selezioniamo il record con quell'id
-		Optional<Foto> optFoto = fotoService.findFotoByID(id);
-		Foto foto = optFoto.get();					
-		model.addAttribute("foto", foto);
+		Optional<Photo> optPhoto = PhotoService.findPhotoByID(id);
+		Photo Photo = optPhoto.get();					
+		model.addAttribute("Photo", Photo);
 						
 		//a quale view fa riferimento
-		return "fotoCRUD/show";
+		return "PhotoCRUD/show";
 	}
 	
 	//ALL FREE PATH CATEGORY	
@@ -60,7 +60,7 @@ public class UserAdminController {
 	@GetMapping("/allCategory")
 	public String getCategory(Model model) {
 		//assegnamo ad un lista i record del db
-		List<Category> categories = categoryService.findAllFoto();
+		List<Category> categories = categoryService.findAllPhoto();
 						
 		model.addAttribute("categories", categories);
 						

@@ -44,18 +44,18 @@ public class CategoryService {
 		categoryRepo.delete(category);
 	}	
 	
-	//funzione per le foto correlate
+	//funzione per le Photo correlate
 	
 	//usiamo questa annotation per mantere il canele aperto tra il db e le query
 	@Transactional
-	public List<Category> findAllFoto() {
+	public List<Category> findAllPhoto() {
 		
 		//inserisco in una lista tutti gli ingredienti
 		List<Category> categories = categoryRepo.findAll();	
 		
 		for(Category category : categories) {		
 			//usiamo questa annotazione per creare la query al db
-			Hibernate.initialize(category.getFoto());
+			Hibernate.initialize(category.getPhoto());
 		}		
 		//ritorno la stista con la join
 		return categories;

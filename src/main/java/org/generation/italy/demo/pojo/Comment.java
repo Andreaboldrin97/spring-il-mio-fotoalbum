@@ -31,20 +31,20 @@ public class Comment {
 	private String text;
 	
 	@ManyToOne
-	@JoinColumn(name="foto_id", nullable=false)
+	@JoinColumn(name="Photo_id", nullable=false)
 	@JsonIgnore
-	private Foto foto;
+	private Photo Photo;
 	
 	//COSTRUCTS	
 	// indichiamo il costruttore di default
 	public Comment() {};
 	
 	// costruttore custum
-	public Comment(String name, String text, Foto foto) {
+	public Comment(String name, String text, Photo Photo) {
 		
 		setName(name);
 		setText(text);
-		setFoto(foto);
+		setPhoto(Photo);
 	}
 	
 	
@@ -70,11 +70,11 @@ public class Comment {
 		this.text = text;
 	}
 
-	public Foto getFoto() {
-		return foto;
+	public Photo getPhoto() {
+		return Photo;
 	}
-	public void setFoto(Foto foto) {
-		this.foto = foto;
+	public void setPhoto(Photo Photo) {
+		this.Photo = Photo;
 	};
 	
 	@Override

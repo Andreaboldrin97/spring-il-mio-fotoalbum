@@ -99,7 +99,7 @@ export default {
     //!PHOTO METHODS
    getAllPhoto(){
         //recuperiamo tutte le foto
-        axios.get(API_URL + '/foto/all')
+        axios.get(API_URL + '/Photo/all')
             .then(res => {
         
                 const allPhoto = res.data;
@@ -131,7 +131,7 @@ export default {
         if(this.query == ""){
             this.getAllPhoto();
         }
-        axios.get(API_URL + '/foto/search/'+ this.query )
+        axios.get(API_URL + '/Photo/search/'+ this.query )
          .then(res => {
              const allPhoto = res.data;
             //se il risultato è null blocca l'eseguzione
@@ -143,7 +143,7 @@ export default {
     },
    //!CATEGORIES METHODS
      getPhotoCategories(photoId) {
-      axios.get(API_URL + "/category/by/foto/" + photoId)
+      axios.get(API_URL + "/category/by/Photo/" + photoId)
         .then(response => {
             const categories = response.data
             if (categories == null) return
@@ -164,7 +164,7 @@ export default {
     //!COMMENT METHODS
     //query per ottenere
     getPhotoComments(photoId) {
-      axios.get(API_URL + "/comment/by/foto/" + photoId)
+      axios.get(API_URL + "/comment/by/Photo/" + photoId)
         .then(response => {
             const comments = response.data
             if (comments == null) return
@@ -184,7 +184,7 @@ export default {
     },
     //metodo create
     createNewComment(photoId){
-        axios.post(API_URL + "/comment/add/by/foto/" + photoId, this.comment_create)
+        axios.post(API_URL + "/comment/add/by/Photo/" + photoId, this.comment_create)
         .then(response => {
             const comment = response.data
             if (comment == null) return

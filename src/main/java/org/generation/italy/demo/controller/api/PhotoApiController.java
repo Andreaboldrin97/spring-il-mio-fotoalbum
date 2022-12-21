@@ -2,8 +2,8 @@ package org.generation.italy.demo.controller.api;
 
 import java.util.List;
 
-import org.generation.italy.demo.pojo.Foto;
-import org.generation.italy.demo.service.FotoService;
+import org.generation.italy.demo.pojo.Photo;
+import org.generation.italy.demo.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/1/foto")
+@RequestMapping("/api/1/Photo")
 @CrossOrigin("*")
-public class FotoApiController {
+public class PhotoApiController {
 	//indichiamo la dipendenza da iniettare
 	@Autowired
-	private FotoService fotoService;
+	private PhotoService PhotoService;
 	
 	@GetMapping("/all")
-	public List<Foto> getAll() {
-		return fotoService.findAll();
+	public List<Photo> getAll() {
+		return PhotoService.findAll();
 	}
 	
 	@GetMapping("/search/{query}")
-	public List<Foto> getSearchPhoto(@PathVariable("query") String query) {
+	public List<Photo> getSearchPhoto(@PathVariable("query") String query) {
 		 System.err.println(query);
 		//utilizziamo un ternario per verificare la presenza di una query
-		List<Foto> allFoto = query == null ? fotoService.findAll() : fotoService.findByTitleAndTag(query, query);
-		return allFoto ;
+		List<Photo> allPhoto = query == null ? PhotoService.findAll() : PhotoService.findByTitleAndTag(query, query);
+		return allPhoto ;
 	}
 }

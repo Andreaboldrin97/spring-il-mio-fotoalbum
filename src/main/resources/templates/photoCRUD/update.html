@@ -17,9 +17,9 @@
 				</div>
 			</div>
 			<!-- form per la compilazione dei record -->
-			<form class="container border mt-5 p-3" method="POST" th:action="@{/admin/foto/update}" th:object="${foto}" >
+			<form class="container border mt-5 p-3" method="POST" th:action="@{/admin/Photo/update}" th:object="${Photo}" >
 				<input type="text" name="id" th:field="*{id}" class="d-none" >
-				<div th:insert="frag :: form-crud-foto"></div>		
+				<div th:insert="frag :: form-crud-Photo"></div>		
 			</form>
 		
 			

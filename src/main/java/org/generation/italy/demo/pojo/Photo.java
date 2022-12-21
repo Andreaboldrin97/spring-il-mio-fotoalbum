@@ -24,7 +24,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Foto {
+public class Photo {
 	
 	//Indichiamo le colonne presenti nella tabella ( variabili d'istanza )
 	
@@ -33,7 +33,7 @@ public class Foto {
 		private int id;
 		
 		@NotNull
-		@NotEmpty(message = "la foto deve contenere un titolo")
+		@NotEmpty(message = "la Photo deve contenere un titolo")
 		private String title;
 		
 		@Column(length = 250)
@@ -49,15 +49,15 @@ public class Foto {
 		@NotNull(message = "la visibilità non può essere null")
 		private Boolean isVisible;
 		
-		@OneToMany(mappedBy = "foto")
+		@OneToMany(mappedBy = "Photo")
 		@JsonIgnore
 		private Set<Comment> comments;
 		
 		//creiamo la relazione con le categorie
 		@ManyToMany()
 		@JoinTable(
-				name = "category_foto",
-				joinColumns = @JoinColumn(name = "foto_id"),
+				name = "category_Photo",
+				joinColumns = @JoinColumn(name = "Photo_id"),
 				inverseJoinColumns = @JoinColumn(name = "category_id")
 				)
 		@JsonIgnore
@@ -65,10 +65,10 @@ public class Foto {
 		
 		//COSTRUCTS	
 		// indichiamo il costruttore di default
-		public Foto() {};
+		public Photo() {};
 
 		//creiamo il costruttore
-		public Foto(String title, String description, String url, String tag, Boolean isVisible) {
+		public Photo(String title, String description, String url, String tag, Boolean isVisible) {
 			 
 			setTitle(title);
 			setDescription(description);
@@ -78,7 +78,7 @@ public class Foto {
 		};
 		
 		//creiamo il costruttore
-		public Foto(String title, String description, String url, String tag, Boolean isVisible, Category...categories) {
+		public Photo(String title, String description, String url, String tag, Boolean isVisible, Category...categories) {
 					 
 			this(title, description, url, tag, isVisible);
 			setCategories(new HashSet<>(Arrays.asList(categories)));
