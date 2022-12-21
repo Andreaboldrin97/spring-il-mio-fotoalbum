@@ -196,6 +196,9 @@ export default {
             photo.comments.push(comment); 
             //sostituisco il vecchio elemento con quello nuovo aggiornato 
             this.photos.splice(index, 1 , photo);
+            //ripotiamo i commenti vuoti
+            this.comment_create.name = '';
+            this.comment_create.text = '';
         })
         .catch(error => {
           console.log(error)
