@@ -15,6 +15,15 @@ public class MainController {
 	//indichiamo la dipendenza da iniettare
 	@Autowired
 	private FotoService fotoService;
+	
+
+		//HOME
+		//Indichiamo a quale path fa riferimento questo metodo
+		@GetMapping("/")
+		public String getHome() {
+			//ritorniamo il file assocciato al nome "home"
+			return "home";
+		}
 		
 	//FILTERED SEARCH
 		@GetMapping("/search")
@@ -31,4 +40,5 @@ public class MainController {
 				
 			return "searching";
 		}
+		
 }
