@@ -20,7 +20,7 @@
 				      <th scope="col">NOME</th>
 				      <th scope="col">FOTO CORRELATE</th>
 				      <th scope="col" sec:authorize="hasAuthority('admin')">
-				      	<a class="btn btn-primary" th:href="@{admin/category/create}" >AGGIUNGI CATEGORIA</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/category/create}" >AGGIUNGI CATEGORIA</a>
 				      </th>
 				    </tr>
 				  </thead>
@@ -38,8 +38,8 @@
 				       		<div th:unless="${category.getPhoto().size > 0}">non ci sono FOTO correlate</div>
 				       </td>
 				      <td sec:authorize="hasAuthority('admin')">
-				      	<a class="btn btn-primary" th:href="@{admin/category/edit/{id} (id = *{id})}" >Edit</a>
-					  	<a class="btn btn-danger"th:href="@{admin/category/delete/{id} (id = *{id})}">Delete</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/category/edit/{id} (id = *{id})}" >Edit</a>
+					  	<a class="btn btn-danger"th:href="@{/admin/category/delete/{id} (id = *{id})}">Delete</a>
 					  </td>
 				    </tr>
 				  </tbody>

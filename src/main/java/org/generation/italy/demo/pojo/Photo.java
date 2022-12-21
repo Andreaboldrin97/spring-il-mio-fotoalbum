@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.URL;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,7 +50,7 @@ public class Photo {
 		@NotNull(message = "la visibilità non può essere null")
 		private Boolean isVisible;
 		
-		@OneToMany(mappedBy = "Photo")
+		@OneToMany(mappedBy = "Photo", cascade = CascadeType.REMOVE)
 		@JsonIgnore
 		private Set<Comment> comments;
 		
