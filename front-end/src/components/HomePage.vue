@@ -189,6 +189,7 @@ export default {
     createNewComment(photoId){
         if(this.comment_create.text == null){
              this.error_comment_text = true;
+             setTimeout(() => this.error_comment_text = false, 2500);
         }
         axios.post(API_URL + "/comment/add/by/Photo/" + photoId, this.comment_create)
         .then(response => {
