@@ -50,6 +50,7 @@ public class Foto {
 		private Boolean isVisible;
 		
 		@OneToMany(mappedBy = "foto")
+		@JsonIgnore
 		private Set<Comment> comments;
 		
 		//creiamo la relazione con le categorie
@@ -132,8 +133,14 @@ public class Foto {
 		public void setCategories(Set<Category> categories) {
 			this.categories = categories;
 		}
-		
-	
+			
+		public Set<Comment> getComments() {
+			return comments;
+		}
+		public void setComments(Set<Comment> comments) {
+			this.comments = comments;
+		}
+
 		@Override
 		public String toString() {
 			return "(" + getId() + ") " + getTitle() + " - " 

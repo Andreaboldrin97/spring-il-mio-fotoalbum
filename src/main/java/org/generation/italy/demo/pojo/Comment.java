@@ -2,6 +2,8 @@ package org.generation.italy.demo.pojo;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +32,7 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name="foto_id", nullable=false)
+	@JsonIgnore
 	private Foto foto;
 	
 	//COSTRUCTS	
@@ -74,5 +77,21 @@ public class Comment {
 		this.foto = foto;
 	};
 	
+	@Override
+	public String toString() {
+		return "(" + getId() + ") " + getName() + ": " + getText(); 
+	}
+	
+	@Override
+	public int hashCode() {
+		return getId();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Category)) return false;
+		
+		return obj.hashCode() == hashCode();
+	}
 	
 }

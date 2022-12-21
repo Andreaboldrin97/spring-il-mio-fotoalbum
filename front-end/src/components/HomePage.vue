@@ -21,6 +21,7 @@
                             <p class="card-text" v-else>
                                 {{ photo.description }}
                             </p>
+                            <h5>#{{ photo.tag }}</h5>
                         </div>
                         <div v-if="photo.categories">
                             <div v-if="photo.categories.length > 0" class="w-100 px-3">
@@ -28,16 +29,17 @@
                                 <span class="badge badge-fill bg-success p-2 d-inline-block me-1 text-white" v-for="category in photo.categories" :key="category.id">
                                     {{category.name}} 
                                 </span>
+                            </div>
+                            <div v-else>
+                                NON CI SONO Categorie
+                            </div>
                         </div>
-                        <div v-else>
-                            NON CI SONO Categorie
-                        </div>
-                        </div>
-                        <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>        
+                        <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>    
+                           
                     </div>
                         
                     <div class="card-footer">
-                        {{ photo.tag }}
+                        
                     </div>                  
                 </div>
             </div>
