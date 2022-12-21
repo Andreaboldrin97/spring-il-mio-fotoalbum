@@ -13,7 +13,7 @@
                         </li>
                         
                     </ul>          
-                    <a class="mx-2 btn btn-success" href="http://localhost:8080/login">ACCEDI</a>
+                    <a class="mx-2 btn btn-success" href="http://localhost:8080">ACCEDI</a>
                 </div>
             </div>
         </nav>
