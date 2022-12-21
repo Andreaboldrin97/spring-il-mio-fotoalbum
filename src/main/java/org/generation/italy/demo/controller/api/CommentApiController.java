@@ -8,6 +8,7 @@ import org.generation.italy.demo.service.CommentService;
 import org.generation.italy.demo.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ public class CommentApiController {
 	@Autowired
 	private FotoService fotoService;
 	
+	@GetMapping("/by/foto/{id}")
 	public Set<Comment> getCommentByFotoId(@PathVariable("id") int id){
 		
 		Foto foto = fotoService.findFotoByID(id).get();

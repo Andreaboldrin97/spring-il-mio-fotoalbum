@@ -30,11 +30,24 @@
                                     {{category.name}} 
                                 </span>
                             </div>
-                            <div v-else>
-                                NON CI SONO Categorie
+                            <div v-else class="mt-1">
+                                NON CI SONO CATEGORIE
                             </div>
                         </div>
-                        <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>    
+                        <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>
+
+                        <div v-if="photo.comments">
+                            <div v-if="photo.comments.length > 0" class="w-100 px-3">
+                                <strong>Commenti: </strong>
+                                <div class="p-2 me-1" v-for="comment in photo.comments" :key="comment.id">
+                                   <span class="badge text-bg-primary"> {{comment.name}} </span> : <span> {{comment.text}}</span>
+                                </div>
+                            </div>
+                            <div v-else class="mt-1">
+                                NON CI SONO COMMENTI
+                            </div>
+                        </div>
+                        <button v-else @click="getPhotoComments(photo.id)" class="btn btn-info me-1">commenti</button>      
                            
                     </div>
                         
@@ -127,7 +140,26 @@ export default {
           console.log(error)
         })
     },
-    
+    //!COMMENT METHODS
+    getPhotoComments(photoId) {
+      axios.get(API_URL + "/comment/by/foto/" + photoId)
+        .then(response => {
+            const comments = response.data
+            if (comments == null) return
+          //recupero l'index dell'elemento
+            const index = this.getPhotoIndexById( photoId);
+          //recupro l'elemento nell'array by index
+            const photo = this.photos[index];
+          //aggiungo le categorie
+            photo.comments = comments; 
+          //sostituisco il vecchio elemento con quello nuovo aggiornato 
+            this.photos.splice(index, 1 , photo);
+            console.log(this.photos[index]);
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
   },
     mounted() {
         this.getAllPhoto(); 
