@@ -2,7 +2,7 @@
   <div class="bg-dark bg-gradient">
       <HeaderComponent/>
       <main class="container">
-           <div class="d-flex mt-2 justify-content-end">
+           <div class="d-flex mt-3 justify-content-end">
                <div class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model.trim="query" @keyup="getSearchPhoto()">
                     <button class="btn btn-outline-success" type="submit" @click="getSearchPhoto()">Search</button>
