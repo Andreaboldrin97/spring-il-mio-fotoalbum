@@ -56,14 +56,14 @@
                          <div v-else>
                             <div class="w-100">
                                 <div class="mb-3">
-                                    <input class="form-control" type="text" name="name" v-model="comment_create.name" placeholder="Inserisci il tuo nome">
+                                    <input class="form-control" type="text" name="name" v-model.trim="comment_create.name" placeholder="Inserisci il tuo nome">
                                 </div>
                                 <div class="mb-3">
                                     <div>
                                         <p v-if=" error_comment_text == false"></p>
                                         <p v-else class="text-danger">il commento deve contenere qualcosa</p>
                                     </div>
-                                    <input class="form-control" type="text" name="text" v-model="comment_create.text" placeholder="Commenta..">
+                                    <input class="form-control" type="text" name="text" v-model.trim="comment_create.text" placeholder="Commenta..">
                                 </div>
                                 <button class="btn btn-success" @click="createNewComment(photo.id)">invio</button>
                                  <button class="btn ms-2 btn-outline-secondary" @click="photo_id = -1">nascondi</button>
@@ -187,9 +187,9 @@ export default {
     },
     //metodo create
     createNewComment(photoId){
-        if(this.comment_create.text == null){
+        if((this.comment_create.text == null) || (this.comment_create.text == '')){
              this.error_comment_text = true;
-             setTimeout(() => this.error_comment_text = false, 2500);
+             setTimeout(() => this.error_comment_text = false, 2000);
         }
         axios.post(API_URL + "/comment/add/by/Photo/" + photoId, this.comment_create)
         .then(response => {
