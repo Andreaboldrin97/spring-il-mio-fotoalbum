@@ -62,9 +62,12 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 			Category c1 = new Category("film");
 			Category c2 = new Category("sport");
 			Category c3 = new Category("hobby");
-			Category c4 = new Category("calcio");
-			Category c5 = new Category("moda");
-			Category c6 = new Category("programazzione");
+			Category c4 = new Category("programazzione");
+			Category c5 = new Category("arte");
+			Category c6 = new Category("cani");
+			Category c7 = new Category("family");
+			Category c8 = new Category("giappone");
+			Category c9 = new Category("cina");
 			
 			categoryService.save(c1);
 			categoryService.save(c2);
@@ -72,37 +75,36 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 			categoryService.save(c4);
 			categoryService.save(c5);
 			categoryService.save(c6);
+			categoryService.save(c7);
+			categoryService.save(c8);
+			categoryService.save(c9);
 			
 			//Photo
-			Photo f1 = new Photo("tiltle 1", "description 1", 
-						"https://images.prismic.io/mystique/5d7c09b9-40e5-4254-ae1c-2c1cb59aa898_IMG3.jpg?auto=compress,format",
-						"avventura", true , c1,c3);
-			Photo f2 = new Photo("tiltle 2", null,
-							"https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds.jpg",
-							"viaggio", true , c2,c3);
-			Photo f3 = new Photo("tiltle 3", "description 3",
-							"https://www.visitdubai.com/-/media/gathercontent/article/t/top-rides-at-img-worlds-of-adventure/media/top-rides-at-img-worlds-of-adventure-predator-5.jpg?rev=f1bb54a15add49a09c912eac851f4ff7&cx=0.56&cy=0.4&cw=397&ch=397",
-							"divertimento", false ,c2, c6);
-			Photo f4 = new Photo("tiltle 4", "description 14", 
+			Photo f1 = new Photo("my family", "io e la mia famiglia", 
+						"https://blog.ferplast.com/wp-content/uploads/2020/09/bassotto-arlecchino-prezzo-adozione-1024x683.jpg",
+						"avventura", true, c1,c7);
+			Photo f2 = new Photo("Giappone lovers", null,
+							"https://www.analisidellopera.it/wp-content/uploads/2019/10/Hokusai_La_grande_onda_di_Kanagawa.jpg",
+							"hokusai", true, c5,c8);
+			Photo f3 = new Photo("disneyland", "che emozione...",
+							"https://i0.wp.com/www.badtaste.it/cinema/wp-content/uploads/sites/1/2021/03/disneyland-paris.jpeg?fit=1200%2C600&quality=85&strip=all&ssl=1",
+							"divertimento", false, c3);
+			Photo f4 = new Photo("spider move", "che film ragazzi....", 
 							"https://images.prismic.io/mystique/5d7c09b9-40e5-4254-ae1c-2c1cb59aa898_IMG3.jpg?auto=compress,format",
-							"avventura", true , c1,c3);
-			Photo f5 = new Photo("tiltle 5", null,
-							"https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds.jpg",
-							"viaggio", true , c2,c3);
-			Photo f6 = new Photo("tiltle 6", "description 16", 
-							"https://images.prismic.io/mystique/5d7c09b9-40e5-4254-ae1c-2c1cb59aa898_IMG3.jpg?auto=compress,format",
-							"avventura", true , c1,c3);
-			Photo f7 = new Photo("tiltle 7", null,
-							"https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds.jpg",
-							"viaggio", true , c2,c3);
-				
+							"marvel", true, c1,c3);
+			Photo f5 = new Photo("io quando riprendo VSC dopo aver usato eclipse", null,
+							"https://www.bassottotedesco.com/wp-content/uploads/2022/01/bassotto-arlecchino-nero.jpg",
+							"gioia", true, c6, c4, c3);
+			Photo f6 = new Photo("cina lover", null,
+					"https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds.jpg",
+					"viaggio", true, c2, c9);
+		
 			PhotoService.save(f1);
 			PhotoService.save(f2);
 			PhotoService.save(f3);
 			PhotoService.save(f4);
 			PhotoService.save(f5);
 			PhotoService.save(f6);
-			PhotoService.save(f7);
 			
 			//COMMENT
 			Comment com1 = new Comment("poyo1", "Commento 1",f5);
