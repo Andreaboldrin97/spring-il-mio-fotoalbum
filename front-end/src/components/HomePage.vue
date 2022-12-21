@@ -47,7 +47,6 @@
 </template>
 
 <script>
-//import Vue from 'vue'
 //importiamo axios
 import axios from 'axios';
 import HeaderComponent from './HeaderComponent.vue'

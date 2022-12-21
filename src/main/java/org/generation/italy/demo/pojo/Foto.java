@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -47,6 +48,9 @@ public class Foto {
 		
 		@NotNull(message = "la visibilità non può essere null")
 		private Boolean isVisible;
+		
+		@OneToMany(mappedBy = "foto")
+		private Set<Comment> comments;
 		
 		//creiamo la relazione con le categorie
 		@ManyToMany()

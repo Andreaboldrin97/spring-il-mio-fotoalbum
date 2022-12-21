@@ -1,10 +1,12 @@
 package org.generation.italy.demo;
 
 import org.generation.italy.demo.pojo.Category;
+import org.generation.italy.demo.pojo.Comment;
 import org.generation.italy.demo.pojo.Foto;
 import org.generation.italy.demo.pojo.Role;
 import org.generation.italy.demo.pojo.User;
 import org.generation.italy.demo.service.CategoryService;
+import org.generation.italy.demo.service.CommentService;
 import org.generation.italy.demo.service.FotoService;
 import org.generation.italy.demo.service.RoleService;
 import org.generation.italy.demo.service.UserService;
@@ -32,6 +34,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	//DATI FAKER
 		@Override
@@ -98,5 +103,12 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 			fotoService.save(f5);
 			fotoService.save(f6);
 			fotoService.save(f7);
+			
+			//COMMENT
+			Comment com1 = new Comment("poyo1", "Commento 1",f5);
+			Comment com2 = new Comment("poyo2", "Commento 2",f5);
+			
+			commentService.save(com1);
+			commentService.save(com2);
 		}
 }
