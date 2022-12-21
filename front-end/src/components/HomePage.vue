@@ -53,18 +53,16 @@
                         
                     <div class="card-footer">
                         <button class="btn btn-outline-dark " @click="editCommentPhoto(photo.id)" v-if="photo_id !== photo.id">commenta</button>
-                         <div class="p-3" v-else>
+                         <div v-else>
                             <div class="w-100">
-                                AGGIUNGI UN COMMENTO..
                                 <div class="mb-3">
-                                    <label class="form-label">Inserisci il tuo nome</label>
-                                    <input class="form-control" type="text" name="name" v-model="comment_create.name">
+                                    <input class="form-control" type="text" name="name" v-model="comment_create.name" placeholder="Inserisci il tuo nome">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Inserisci il tuo commento</label>
-                                    <input class="form-control" type="text" name="text" v-model="comment_create.text">
+                                    <input class="form-control" type="text" name="text" v-model="comment_create.text" placeholder="Commenta..">
                                 </div>
                                 <button class="btn btn-success" @click="createNewComment(photo.id)">invio</button>
+                                 <button class="btn ms-2 btn-outline-secondary" @click="photo_id = -1">nascondi</button>
                             </div>
                         </div>
                     </div>                  
