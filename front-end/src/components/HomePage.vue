@@ -59,6 +59,10 @@
                                     <input class="form-control" type="text" name="name" v-model="comment_create.name" placeholder="Inserisci il tuo nome">
                                 </div>
                                 <div class="mb-3">
+                                    <div>
+                                        <p v-if=" error_comment_text == false"></p>
+                                        <p v-else class="text-danger">il commento deve contenere qualcosa</p>
+                                    </div>
                                     <input class="form-control" type="text" name="text" v-model="comment_create.text" placeholder="Commenta..">
                                 </div>
                                 <button class="btn btn-success" @click="createNewComment(photo.id)">invio</button>
@@ -91,6 +95,7 @@ export default {
         addBooleanComment : false,
         comment_create : {},
         photo_id : -1,
+        error_comment_text : false
     };
   },
   methods: {
@@ -182,6 +187,9 @@ export default {
     },
     //metodo create
     createNewComment(photoId){
+        if(this.comment_create.text == null){
+             this.error_comment_text = true;
+        }
         axios.post(API_URL + "/comment/add/by/Photo/" + photoId, this.comment_create)
         .then(response => {
             const comment = response.data
