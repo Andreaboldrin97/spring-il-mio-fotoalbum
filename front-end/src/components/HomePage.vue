@@ -9,38 +9,36 @@
                </div>
            </div>
         <div class="row">
-            <div class="my-2 col-6" v-for="photo in photos" :key="photo.id">
-                <div :class="photo.isVisible ? ' ' : 'd-none'">
-                    <div class="card m-3">
-                        <div class="card-img d-flex justify-content-center">
-                            <img  :src="photo.url" class="card-img-top" alt="image-post"> 
-                        </div>
-                        <div class="card-body">
-                            <h3>{{ photo.title }}</h3>
-                            <div>
-                                <p class="card-text text-muted" v-if="photo.description == null">La foto non contiene descrizione</p>
-                                <p class="card-text" v-else>
-                                    {{ photo.description }}
-                                </p>
-                            </div>
-                            <div v-if="photo.categories">
-                                 <div v-if="photo.categories.length > 0" class="w-100 px-3">
-                                    <strong>Categorie: </strong>
-                                    <span class="badge badge-fill bg-success p-2 d-inline-block me-1 text-white" v-for="category in photo.categories" :key="category.id">
-                                        {{category.name}} 
-                                    </span>
-                                </div>
-                                <div v-else>
-                                    NON CI SONO Categorie
-                                </div>
-                            </div>
-                           <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>        
-                        </div>
-                        
-                        <div class="card-footer">
-                            {{ photo.tag }}
-                        </div>
+            <div class="my-2 col-6" v-for="photo in photos" :key="photo.id" :class="photo.isVisible ? ' ' : 'd-none'">
+                <div class="card m-3">
+                    <div class="card-img d-flex justify-content-center">
+                        <img  :src="photo.url" class="card-img-top" alt="image-post"> 
                     </div>
+                    <div class="card-body">
+                        <h3>{{ photo.title }}</h3>
+                        <div>
+                            <p class="card-text text-muted" v-if="photo.description == null">La foto non contiene descrizione</p>
+                            <p class="card-text" v-else>
+                                {{ photo.description }}
+                            </p>
+                        </div>
+                        <div v-if="photo.categories">
+                            <div v-if="photo.categories.length > 0" class="w-100 px-3">
+                                <strong>Categorie: </strong>
+                                <span class="badge badge-fill bg-success p-2 d-inline-block me-1 text-white" v-for="category in photo.categories" :key="category.id">
+                                    {{category.name}} 
+                                </span>
+                        </div>
+                        <div v-else>
+                            NON CI SONO Categorie
+                        </div>
+                        </div>
+                        <button v-else @click="getPhotoCategories(photo.id)" class="btn btn-success me-1">categorie</button>        
+                    </div>
+                        
+                    <div class="card-footer">
+                        {{ photo.tag }}
+                    </div>                  
                 </div>
             </div>
         </div>
