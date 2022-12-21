@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-dark bg-gradient">
       <HeaderComponent/>
       <main class="container">
            <div class="d-flex mt-2 justify-content-end">
