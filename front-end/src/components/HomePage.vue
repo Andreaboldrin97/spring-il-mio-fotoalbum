@@ -107,7 +107,7 @@ export default {
             console.log(error)
             });
     },
-   //!INGREDIENT METHODS
+   //!CATEGORIES METHODS
      getPhotoCategories(photoId) {
       axios.get(API_URL + "/category/by/foto/" + photoId)
         .then(response => {
