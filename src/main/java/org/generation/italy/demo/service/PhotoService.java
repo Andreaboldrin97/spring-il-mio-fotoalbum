@@ -48,5 +48,8 @@ public class PhotoService {
 		return PhotoRepo.findByTitleContainingOrTagContaining(title, tag);
 	}
 	
-	
+	//funzione per ricevere solo le foto visibili
+	public List<Photo> findByIsVisibleTrue(){
+		return PhotoRepo.findByIsVisibleTrue();
+	}
 }

@@ -9,7 +9,7 @@
                </div>
            </div>
         <div class="row">
-            <div class="my-4 col-6" v-for="photo in photos" :key="photo.id" :class="photo.isVisible ? ' ' : 'd-none'">
+            <div class="my-4 col-6" v-for="photo in photos" :key="photo.id" >
                 <div class="card m-3 move-card">
                     <div class="card-img d-flex justify-content-center">
                         <img  :src="photo.url" class="card-img-top" alt="image-post"> 
