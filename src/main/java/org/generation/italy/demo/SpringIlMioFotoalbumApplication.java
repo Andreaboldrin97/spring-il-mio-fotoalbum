@@ -107,10 +107,14 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 			PhotoService.save(f6);
 			
 			//COMMENT
-			Comment com1 = new Comment("poyo1", "Commento 1",f5);
-			Comment com2 = new Comment("poyo2", "Commento 2",f5);
+			Comment com1 = new Comment("poyo_user", "Viva intellij",f5);
+			Comment com2 = new Comment("user-12345", "voi giovani ... meglio senza IDE",f5);
+			Comment com3 = new Comment("poyo_user", "Viva i poyiii",f1);
+			Comment com4 = new Comment("user-12345", "❤ ❤ ❤ ❤ ❤ ❤",f1);
 			
 			commentService.save(com1);
 			commentService.save(com2);
+			commentService.save(com3);
+			commentService.save(com4);
 		}
 }
