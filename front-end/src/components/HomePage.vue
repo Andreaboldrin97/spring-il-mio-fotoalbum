@@ -40,7 +40,7 @@
                             <div v-if="photo.comments.length > 0" class="w-100 px-3">
                                 <strong>Commenti: </strong>
                                 <div class="p-2 me-1" v-for="comment in photo.comments" :key="comment.id">
-                                   <span class="badge text-bg-primary"> {{comment.name}} </span> : <span> {{comment.text}}</span>
+                                   <span class="badge bg-primary"> {{comment.name}} </span> : <span> {{comment.text}}</span>
                                 </div>
                             </div>
                             <div v-else class="mt-1">

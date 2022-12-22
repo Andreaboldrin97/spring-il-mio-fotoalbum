@@ -37,10 +37,10 @@ public class CategoryController {
 		@GetMapping("/category/create")
 		public String createCategory(Model model) {
 			
-			//esportiamo il costrutto delle Photo
+			
 			Category category = new Category();
 			model.addAttribute("category", category);
-			
+			//esportiamo il costrutto delle Photo
 			List<Photo> allPhoto =  PhotoService.findAll();
 			model.addAttribute("allPhoto", allPhoto);
 			

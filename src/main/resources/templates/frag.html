@@ -55,14 +55,21 @@
 		
 		<!-- SHOW Photo CRUD FRAGMENT -->
 		<th:block th:fragment="frag-show">
-			<div class="card" style="width: 18rem;">
+			<div class="card mb-4" style="width: 35rem;">
 				 <img th:src="*{url}" class="card-img-top" th:alt="*{title}">
 				 <div class="card-body">
 				 	 <h5 class="card-title" th:text="*{title}"></h5>
 				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{tag}"></h6>
 				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{isVisible}"></h6>
 				    <p class="card-text" th:text="*{description}"></p>
-				    <h6 class="card-subtitle mb-2 text-muted" th:text="${Photo.categories}"></h6>
+				    <strong>categorie :</strong>
+				    <h6 class="card-subtitle mb-2 badge bg-warning" th:each="category : ${Photo.categories}" th:object="${category}">
+				    	[[*{name}]]
+				    </h6>
+				    <strong class="d-block">Commenti :</strong>
+				    <p th:each="comment : ${Photo.comments}" th:object="${comment}">			    	
+				    	<span class="badge bg-primary">[[*{name}]]</span> : <span>[[*{text}]]</span>
+				    </p>
 				</div>
 			</div>
 		</th:block>

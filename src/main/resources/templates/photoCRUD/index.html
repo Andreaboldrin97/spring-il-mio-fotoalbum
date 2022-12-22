@@ -40,8 +40,8 @@
 				      <td th:text="*{tag}"></td>
 				      <td th:text="*{isVisible}"></td>
 				      <td>
-				       	<div
-				       		th:text="${Photo.categories}">
+				       	<div class="card-subtitle mb-2 badge bg-warning" th:each="category : ${Photo.categories}" th:object="${category}">
+				       		[[*{name}]]
 				       	</div>
 				      </td>
 				      <td sec:authorize="hasAuthority('admin')" class="d-flex m-1">
