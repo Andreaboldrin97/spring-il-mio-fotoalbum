@@ -28,7 +28,7 @@ public class PhotoApiController {
 	public List<Photo> getSearchPhoto(@PathVariable("query") String query) {
 		 System.err.println(query);
 		//utilizziamo un ternario per verificare la presenza di una query
-		List<Photo> allPhoto = query == null ? PhotoService.findByIsVisibleTrue() : PhotoService.findByTitleAndTag(query, query);
+		List<Photo> allPhoto = query == null ? PhotoService.findByIsVisibleTrue() : PhotoService.findByTitleAndTagAndVisible(query, query);
 		return allPhoto ;
 	}
 }

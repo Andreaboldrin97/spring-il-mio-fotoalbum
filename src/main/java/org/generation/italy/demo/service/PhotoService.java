@@ -45,11 +45,16 @@ public class PhotoService {
 	//funzione di ricerca by title
 	public List<Photo> findByTitleAndTag(String title, String tag) {
 		//ritorniamo una lista di record
-		return PhotoRepo.findByTitleContainingOrTagContaining(title, tag);
+		return PhotoRepo.findByTitleContainingIgnoreCaseOrTagContainingIgnoreCase(title, tag);
 	}
 	
 	//funzione per ricevere solo le foto visibili
 	public List<Photo> findByIsVisibleTrue(){
 		return PhotoRepo.findByIsVisibleTrue();
+	}
+	
+	//metodo per la ricerca del front + solo le foto visibili
+	public List<Photo> findByTitleAndTagAndVisible(String title, String tag){
+		return PhotoRepo.findByTitleContainingIgnoreCaseOrTagContainingIgnoreCaseAndIsVisibleTrue(title, tag);
 	}
 }
