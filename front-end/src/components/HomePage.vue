@@ -81,7 +81,7 @@
 //importiamo axios
 import axios from 'axios';
 import HeaderComponent from './HeaderComponent.vue'
-//costabte url
+//costante url
 const API_URL = "http://localhost:8080/api/1";
 
 export default {
@@ -175,7 +175,7 @@ export default {
             const index = this.getPhotoIndexById( photoId);
           //recupro l'elemento nell'array by index
             const photo = this.photos[index];
-          //aggiungo le categorie
+          //aggiungo i commenti
             photo.comments = comments; 
           //sostituisco il vecchio elemento con quello nuovo aggiornato 
             this.photos.splice(index, 1 , photo);
@@ -199,7 +199,7 @@ export default {
             const index = this.getPhotoIndexById( photoId);
           //recupro l'elemento nell'array by index
             const photo = this.photos[index];
-          //aggiungo le categorie
+          //aggiungo i commenti
             photo.comments.push(comment); 
             //sostituisco il vecchio elemento con quello nuovo aggiornato 
             this.photos.splice(index, 1 , photo);
